@@ -1,0 +1,28 @@
+<%- include("header") %>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
+<div class="box">
+
+
+  <% for(let i = 0; i < dataTodo.length; i++) { %>
+  <form action="/delete" method="post">
+    <div class="item">
+      <input type="checkbox" name="checkbox" value="<%= dataTodo[i]._id %>" onchange="this.form.submit()"/>
+      <p><%= dataTodo[i].name %></p>
+      <input type="hidden" name="namelist" value="<%= listTitle %>"/>
+    </div>
+  </form>
+  <% } %>
+
+  <form class="item" action="/" method="post">
+    <input
+      type="text"
+      name="newItem"
+      placeholder="New Item"
+      autocomplete="off"
+    />
+    <button type="submit" name="list" value="<%= listTitle %>">+</button>
+  </form>
+</div>
+<%- include("footer") %>
