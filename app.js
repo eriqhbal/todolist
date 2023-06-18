@@ -135,6 +135,11 @@ app.get("/work", function (req, res) {
   res.render("list", { listTitle: "Work List", dataTodo: workList });
 });
 
-app.listen(process.env.PORT || 3000, () => {
+let port = process.env.PORT;
+
+if(port == "" || port == null){
+  port = 3000;
+}
+app.listen(port, () => {
   console.log("run on port : 3000");
 });
